@@ -1,0 +1,15 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 50001
+Auth:
+  AccessSecret: "kkr@kkr@kkr"
+  AccessExpire: 7776000
+UserSvc:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: user.rpc
+Qiniu:
+  Bucket: fireflylovetest
+  AK: 6N0siQESRkSyC2YvIzqpCL3Qi1fPkp18HF1ylrzM
+  SK: 3v1COjbRU0crPgo_GjncH8WYvb0stVK40rbB6WbJ
