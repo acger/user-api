@@ -7,7 +7,7 @@ Auth:
 UserSvc:
   Etcd:
     Hosts:
-      - localhost:2379
+      - etcd.default.svc.cluster.local:2379
     Key: user.rpc
 Qiniu:
   Bucket: fireflylovetest
