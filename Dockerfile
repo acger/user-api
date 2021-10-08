@@ -16,15 +16,13 @@ COPY ./etc /app/etc
 RUN go build -ldflags="-s -w" -o /app/main ./main.go
 
 
-FROM nginx:alpine
-
-WORKDIR /app
-COPY --from=builder /app/main /app/main
-COPY --from=builder /app/etc /app/etc
-COPY  /nginx /etc/nginx/conf.d
+FROM alpine
 
 RUN apk update --no-cache && apk add --no-cache ca-certificates tzdata
-RUN nginx
-
 ENV TZ Asia/Shanghai
+
+COPY --from=builder /app/main /app/main
+COPY --from=builder /app/etc /app/etc
+
+WORKDIR /app
 CMD ["./main", "-f", "etc/user-api.yaml"]
