@@ -13,6 +13,11 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 	engine.AddRoutes(
 		[]rest.Route{
 			{
+				Method:  http.MethodGet,
+				Path:    "/home",
+				Handler: homeHandler(serverCtx),
+			},
+			{
 				Method:  http.MethodPost,
 				Path:    "/user/register",
 				Handler: registerHandler(serverCtx),

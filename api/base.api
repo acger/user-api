@@ -1,6 +1,10 @@
 syntax = "v1"
 
 service user-api {
+    @doc "Home"
+    @handler homeHandler
+    get /home () returns (Rsp)
+
     @doc "注册"
     @handler registerHandler
     post /user/register (registerReq) returns (registerRsp)
@@ -90,5 +94,10 @@ type (
         Code int64 `json:"code"`
         Message string `json:"message"`
         Token string `json:"token"`
+    }
+
+    Rsp {
+        Code int64 `json:"code"`
+        Message string `json:"message"`
     }
 )

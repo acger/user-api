@@ -18,12 +18,12 @@ RUN go build -ldflags="-s -w" -o /app/main ./main.go
 
 FROM nginx:alpine
 
-RUN apk update --no-cache && apk add --no-cache ca-certificates tzdata
-ENV TZ Asia/Shanghai
-
 WORKDIR /app
 COPY --from=builder /app/main /app/main
 COPY --from=builder /app/etc /app/etc
 COPY  /nginx /etc/nginx/conf.d
+
+RUN apk update --no-cache && apk add --no-cache ca-certificates tzdata && nginx -g daemon on
+ENV TZ Asia/Shanghai
 
 CMD ["./main", "-f", "etc/user-api.yaml"]

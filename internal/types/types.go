@@ -60,3 +60,8 @@ type QiniuUpRsp struct {
 	Message string `json:"message"`
 	Token   string `json:"token"`
 }
+
+type Rsp struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
+}
