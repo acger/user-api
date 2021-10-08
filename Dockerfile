@@ -23,7 +23,8 @@ COPY --from=builder /app/main /app/main
 COPY --from=builder /app/etc /app/etc
 COPY  /nginx /etc/nginx/conf.d
 
-RUN apk update --no-cache && apk add --no-cache ca-certificates tzdata && nginx -g daemon=on
-ENV TZ Asia/Shanghai
+RUN apk update --no-cache && apk add --no-cache ca-certificates tzdata
+RUN nginx
 
+ENV TZ Asia/Shanghai
 CMD ["./main", "-f", "etc/user-api.yaml"]
