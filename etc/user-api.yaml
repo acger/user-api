@@ -1,6 +1,6 @@
 Name: user-api
 Host: 0.0.0.0
-Port: 50001
+Port: 8081
 Auth:
   AccessSecret: "kkr@kkr@kkr"
   AccessExpire: 7776000
