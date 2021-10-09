@@ -48,7 +48,10 @@ metadata:
   name: user-api
   namespace: default
 spec:
+  type: NodePort
   ports:
     - port: 8081
+      targetPort: 8081
+      nodePort:
   selector:
     app: user-api
