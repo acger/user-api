@@ -7,14 +7,9 @@ Auth:
 UserSvc:
   Etcd:
     Hosts:
-      - etcd.default.svc.cluster.local:2379
+      - 127.0.0.1:2379
     Key: user.rpc
 Qiniu:
-  Bucket: fireflylove
+  Bucket: fireflylovetest
   AK: 6N0siQESRkSyC2YvIzqpCL3Qi1fPkp18HF1ylrzM
   SK: 3v1COjbRU0crPgo_GjncH8WYvb0stVK40rbB6WbJ
-Log:
-  ServiceName: "user-api"
-  Mode: "file"
-  Path: "/var/log/filebeat/user-api"
-  Level: "error"

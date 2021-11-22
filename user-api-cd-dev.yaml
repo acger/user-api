@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: user-api
-          image: docker.io/dk251626910/ffl-user-api:latest
+          image: docker.io/dk251626910/ffl-user-api-dev:latest
           lifecycle:
             preStop:
               exec:
