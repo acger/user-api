@@ -42,16 +42,19 @@ func (l *RegisterLogic) Register(req types.RegisterReq) (*types.RegisterRsp, err
 	})
 
 	if err != nil {
+		logx.Error(err.Error())
 		return &types.RegisterRsp{Code: 1}, nil
 	}
 
 	if r.Code != 0 {
+		logx.Error(err.Error())
 		return &types.RegisterRsp{Code: r.Code, Message: r.Message}, nil
 	}
 
 	u, err := l.svcCtx.UserSvc.UserInfo(l.ctx, &userclient.UserInfoReq{Id: r.Uid})
 
 	if err != nil {
+		logx.Error(err.Error())
 		return &types.RegisterRsp{Code: 1}, nil
 	}
 
