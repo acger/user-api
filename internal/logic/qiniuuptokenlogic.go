@@ -7,7 +7,7 @@ import (
 	"github.com/acger/user-api/internal/types"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/storage"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type QiniuUpTokenLogic struct {

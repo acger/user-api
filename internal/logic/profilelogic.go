@@ -6,8 +6,8 @@ import (
 	"github.com/acger/user-api/internal/svc"
 	"github.com/acger/user-api/internal/types"
 	"github.com/acger/user-api/tool"
-	"github.com/acger/user-svc/userclient"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/acger/user-svc/user"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type ProfileLogic struct {
@@ -26,7 +26,7 @@ func NewProfileLogic(ctx context.Context, svcCtx *svc.ServiceContext) ProfileLog
 
 func (l *ProfileLogic) Profile() (*types.ProfileRsp, error) {
 	uid, _ := l.ctx.Value("userId").(json.Number).Int64()
-	u, err := l.svcCtx.UserSvc.UserInfo(l.ctx, &userclient.UserInfoReq{Id: uint64(uid)})
+	u, err := l.svcCtx.UserSvc.UserInfo(l.ctx, &user.UserInfoReq{Id: uint64(uid)})
 
 	if err != nil {
 		return &types.ProfileRsp{

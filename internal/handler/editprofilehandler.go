@@ -7,7 +7,7 @@ import (
 	"github.com/acger/user-api/internal/svc"
 	"github.com/acger/user-api/internal/types"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func editProfileHandler(ctx *svc.ServiceContext) http.HandlerFunc {

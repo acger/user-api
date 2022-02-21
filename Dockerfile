@@ -13,7 +13,7 @@ ADD go.sum .
 RUN go mod download
 COPY . .
 COPY ./etc /app/etc
-RUN go build -ldflags="-s -w" -o /app/main ./main.go
+RUN go build -ldflags="-s -w" -o /app/main ./user.go
 
 
 FROM alpine
@@ -25,4 +25,4 @@ COPY --from=builder /app/main /app/main
 COPY --from=builder /app/etc /app/etc
 
 WORKDIR /app
-CMD ["./main", "-f", "etc/user-api.yaml"]
+CMD ["./main"]

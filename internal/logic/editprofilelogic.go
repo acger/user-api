@@ -3,12 +3,12 @@ package logic
 import (
 	"context"
 	"encoding/json"
-	"github.com/acger/user-svc/userclient"
+	"github.com/acger/user-svc/user"
 
 	"github.com/acger/user-api/internal/svc"
 	"github.com/acger/user-api/internal/types"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type EditProfileLogic struct {
@@ -27,7 +27,7 @@ func NewEditProfileLogic(ctx context.Context, svcCtx *svc.ServiceContext) EditPr
 
 func (l *EditProfileLogic) EditProfile(req types.EditReq) (*types.EditRsp, error) {
 	uid, _ := l.ctx.Value("userId").(json.Number).Int64()
-	_, err := l.svcCtx.UserSvc.UserUpdate(l.ctx, &userclient.UserUpdateReq{
+	_, err := l.svcCtx.UserSvc.UserUpdate(l.ctx, &user.UserUpdateReq{
 		Id:       uint64(uid),
 		Name:     req.Name,
 		Avatar:   req.Avatar,

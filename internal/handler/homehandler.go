@@ -5,7 +5,7 @@ import (
 
 	"github.com/acger/user-api/internal/logic"
 	"github.com/acger/user-api/internal/svc"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func homeHandler(ctx *svc.ServiceContext) http.HandlerFunc {

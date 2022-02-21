@@ -2,14 +2,14 @@ package logic
 
 import (
 	"context"
-	"github.com/acger/user-svc/userclient"
+	"github.com/acger/user-svc/user"
 	"time"
 
 	"github.com/acger/user-api/internal/svc"
 	"github.com/acger/user-api/internal/types"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type RegisterLogic struct {
@@ -34,7 +34,7 @@ func (l *RegisterLogic) Register(req types.RegisterReq) (*types.RegisterRsp, err
 		return &types.RegisterRsp{Code: 2}, nil
 	}
 
-	r, err := l.svcCtx.UserSvc.UserAdd(l.ctx, &userclient.UserAddReq{
+	r, err := l.svcCtx.UserSvc.UserAdd(l.ctx, &user.UserAddReq{
 		Account:  req.Account,
 		Password: req.Password,
 		Name:     req.Name,
@@ -51,7 +51,7 @@ func (l *RegisterLogic) Register(req types.RegisterReq) (*types.RegisterRsp, err
 		return &types.RegisterRsp{Code: r.Code, Message: r.Message}, nil
 	}
 
-	u, err := l.svcCtx.UserSvc.UserInfo(l.ctx, &userclient.UserInfoReq{Id: r.Uid})
+	u, err := l.svcCtx.UserSvc.UserInfo(l.ctx, &user.UserInfoReq{Id: r.Uid})
 
 	if err != nil {
 		logx.Error("get-user-info-error: ", err.Error())

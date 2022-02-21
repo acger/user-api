@@ -3,7 +3,7 @@ package logic
 import (
 	"context"
 	"github.com/acger/user-api/tool"
-	"github.com/acger/user-svc/userclient"
+	"github.com/acger/user-svc/user"
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 	"time"
@@ -11,7 +11,7 @@ import (
 	"github.com/acger/user-api/internal/svc"
 	"github.com/acger/user-api/internal/types"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type LoginLogic struct {
@@ -41,7 +41,7 @@ func GetJwtToken(secretKey string, iat, seconds, userId int64) (string, error) {
 func (l *LoginLogic) Login(req types.LoginReq) (*types.LoginRsp, error) {
 	us := l.svcCtx.UserSvc
 
-	u, err := us.UserInfo(l.ctx, &userclient.UserInfoReq{
+	u, err := us.UserInfo(l.ctx, &user.UserInfoReq{
 		Account: req.Account,
 	})
 

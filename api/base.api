@@ -3,7 +3,7 @@ syntax = "v1"
 service user-api {
     @doc "Home"
     @handler homeHandler
-    get /home () returns (Rsp)
+    get /home returns (Rsp)
 
     @doc "注册"
     @handler registerHandler
@@ -21,7 +21,7 @@ service user-api {
 service user-api {
     @doc "个人资料"
     @handler profileHandler
-    get /user/profile () returns (profileRsp)
+    get /user/profile returns (profileRsp)
 
     @doc "修改个人资料"
     @handler editProfileHandler
